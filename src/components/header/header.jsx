@@ -1,26 +1,62 @@
 'use client';
 import styled from "styled-components";
 import Link from "next/link";
+import SearchField from "../search-field/search-field";
+import LogoImage from '../../assets/logo.svg';
 
 const Header = styled.header`
-  padding: 4em;
-  background: papayawhip;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: sticky;
+
+  @media(min-width:576px){
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  @media(min-width:1400px){
+    font-size: 18px;
+    color:wheat;
+    
+  }
 `;
-const Nav = styled.section`
-  padding: 4em;
-  background: papayawhip;
+const Nav = styled.nav`
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  @media(min-width:1400px){
+    font-size: 18px;
+    color:wheat;
+  }
+`;
+const NavItem = styled(Link)` 
+  text-decoration: none;
+  &:hover{
+    color:var(--light-100);          
+  }
+  margin:0 10px;
 `;
 
-
+const Logo=styled(NavItem)`
+    background: url(${LogoImage.src}) no-repeat center;
+    width: 35px;
+    height: 35px;
+`;
 const HeaderComponent = () => {
     return (
         <Header>
             <Nav>
-                TEST TASK GAMES
-                <Link href='/'>Home</Link>
-                <Link href='/game/1sasa'>Game1</Link>
-                <Link href='/game/144343'>Game1</Link>
+                <Logo href='/'/>
+                <NavItem href='/'>Home</NavItem>
             </Nav>
+            <SearchField/>
         </Header>
 
     )
