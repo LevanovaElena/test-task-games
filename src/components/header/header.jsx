@@ -5,22 +5,24 @@ import SearchField from "../search-field/search-field";
 import LogoImage from '../../assets/logo.svg';
 
 const Header = styled.header`
-  background: transparent;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   position: sticky;
   top: 0;
+  padding: 30px;
+  background-color: var(--gray-100);
 
   @media(min-width:576px){
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding: 32px 68px;
   }
   @media(min-width:1400px){
     font-size: 18px;
-    color:wheat;    
+    padding: 46px 96px;
   }
 `;
 const Nav = styled.nav`

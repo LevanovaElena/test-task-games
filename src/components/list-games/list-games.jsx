@@ -6,17 +6,13 @@ import {mockGames} from "../../../mocks/games";
 import GameCard from "../game-card/game-card";
 
 const Wrapper = styled.section`
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  background-color: transparent;
-  //padding-top:100px;
 
+  background-color: transparent;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(282px, 1fr));
   grid-column-gap: 30px;
   grid-row-gap:67px;
+  justify-items: center;
   padding: 30px;
 
   @media (min-width: 992px){

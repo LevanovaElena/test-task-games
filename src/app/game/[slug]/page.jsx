@@ -1,18 +1,14 @@
 'use client';
 
-import styled from "styled-components";
-import Link from "next/link";
+import GameCardBig from "../../../components/game-card-big/game-card-big";
+import {mockGame} from "../../../../mocks/games";
+import ScreenGame from "../../../components/screen-game/screen-game";
 
-const Footer = styled.section`
-  padding: 4em;
-  background: papayawhip;
-`;
 
 const Game = () => {
     return (
-        <div>
-            game
-        </div>
+        <ScreenGame/>
+
     )
 }
 

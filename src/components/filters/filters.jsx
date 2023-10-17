@@ -13,13 +13,13 @@ const Wrapper = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 75px 0 ;
+  padding: 20px 0 ;
   background-color: transparent;
   @media(min-width:576px){
-    padding: 110px 0 0 0;   
+    padding:30px 0 40px 0;   
   }
   @media(min-width:1400px){
-    padding: 155px 0 0 0;
+    padding: 30px 0 40px   0;
   }
 `;
 
