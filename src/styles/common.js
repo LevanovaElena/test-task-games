@@ -18,9 +18,9 @@ export const H1=styled.h1`
 
 export const Flex=styled.div`
   display: flex;
-  width: ${props => props.width ? props.width : '100%'};
+  width: ${props => props.flexwidth ? props.flexwidth : '100%'};
   flex-direction: ${props => props.direction ? props.direction : 'row'};
-  justify-content: ${props => props.justifyContent ? props.justifyContent : 'space-between'};
-  align-items: ${props => props.alignItems ? props.alignItems : 'center'};
-  margin: ${props => props.margin ? props.margin : '0'};
+  justify-content: ${props => props.jcontent ? props.jcontent : 'space-between'};
+  align-items: ${props => props.items ? props.items : 'center'};
+  margin: ${props => props.flexmargin ? props.flexmargin : '0'};
 `
