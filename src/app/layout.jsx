@@ -17,7 +17,7 @@ export default function RootLayout({children}) {
             <StyledComponentsRegistry>
                 <body className={`${inter.className} container`}>
                     <HeaderComponent/>
-                        <main >
+                        <main className=''>
                                 {children}
                         </main>
                 </body>

@@ -11,6 +11,7 @@ const Header = styled.header`
   justify-content: flex-start;
   align-items: flex-start;
   position: sticky;
+  top: 0;
 
   @media(min-width:576px){
     flex-direction: row;
@@ -19,8 +20,7 @@ const Header = styled.header`
   }
   @media(min-width:1400px){
     font-size: 18px;
-    color:wheat;
-    
+    color:wheat;    
   }
 `;
 const Nav = styled.nav`

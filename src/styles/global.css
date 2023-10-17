@@ -7,12 +7,14 @@
     --gray-400:#8D8D8D;
     --gray-200:#EDEDED;
     --gray-500:#606060;
+    --gray-250:#EDF2F7;
 
     --neutrals-2:#E6E8EC;
     --neutrals-6:#E6E8EC;
 
     --light-100:#000;
     --dark:#141416;
+    --white:white;
 
     /*BORDERS*/
     --radius-1:25px;
@@ -33,6 +35,9 @@
     margin: 0;
     padding: 0;
 }
+body{
+    position: relative;
+}
 .container{
     padding: 30px;
     background-color: var(--gray-100);
@@ -41,15 +46,15 @@
     color: var(--gray-400);
     font-style: normal;
     line-height: 27px;
-   position: relative;
+    position: relative;
 }
 
-@media (min-width: var(--tablet)){
+@media (min-width: 992px){
     .container {
         padding: 32px 68px;
     }
 }
-@media (min-width: var(--desktop)){
+@media (min-width: 1400px){
     .container {
         padding: 46px 96px;
     }
