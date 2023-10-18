@@ -47,9 +47,6 @@ const AboutGameContainer = styled.figcaption`
   justify-content: space-between;
   align-items: flex-start;
   height: auto;
- /* @media (min-width: 1200px) {
-    justify-content: flex-start;
-  }*/
 `
 
 const TitleGame = styled.span`
@@ -66,7 +63,14 @@ const ImagePoster = styled(Image)`
   object-fit: cover;
   width: 100%;
   height: 100%;
+  margin:0 auto;
+
   transition: all 1s;
+  @media (min-width: 1400px) {
+    max-height: 70vh;
+    object-fit: cover;
+    object-position: center;
+  }
 `
 const Website = styled(Link)`
   background: url("${IconLink.src}") no-repeat center;
@@ -84,7 +88,7 @@ const GameCardBig = () => {
 
     return (
         <Card>
-            <ImagePoster src={game.background_image} alt={'poster'} width={600} height={600}/>
+            <ImagePoster src={game.background_image} alt={'poster'} width={800} height={600}/>
             <AboutGameContainer>
                 <Flex direction={'column'} items={'start'}>
                     <TitleGame href={`/game/${game.slug || game.id}`}>{game.name}</TitleGame>
