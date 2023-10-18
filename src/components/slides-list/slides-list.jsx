@@ -23,7 +23,7 @@ const ImageSlide = styled(Image)`
   max-height: 300px;
   width: 100%;
 `
-const SlidesList = ({idGame}) => {
+const SlidesList = () => {
     const { slideNumber, listImages } = useContext(SliderContext);
 
     return (

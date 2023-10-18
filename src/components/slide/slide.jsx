@@ -27,7 +27,7 @@ const ImageSlide = styled(Image)`
 const Slide = ({slide,animation}) => {
     const [loadWidth, setLoadWidth ] = useState(300);
     const [imageW, setImageW ] = useState(300);
-    const { width, isScreenSm, isScreenMd, isScreenLg, isScreenXl}=useResize();
+    const { width, isScreenSm, isScreenMd,  isScreenXl}=useResize();
     useEffect(() => {
         if(isScreenSm)setLoadWidth(300);
         if(isScreenMd)setLoadWidth(500);

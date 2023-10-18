@@ -62,7 +62,7 @@ const Slider = ({ nameGame}) => {
 
     const changeSlide = (direction = 1) => {
         setAnimation(false);
-        let slideNumber = 0;
+        let slideNumber;
 
         if (slide + direction < 0) {
             slideNumber = listImages.length - 1;

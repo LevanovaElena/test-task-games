@@ -67,11 +67,6 @@ const ImagePoster = styled(Image)`
   height: 100%;
   transition: all 1s;
 `
-const Text = styled.p`
-  line-height: 1.5rem;
-  height: auto;
-  display: block;
-`
 const Website = styled(Link)`
   background: url("${IconLink.src}") no-repeat center;
   width: 26px;

@@ -22,7 +22,7 @@ const SelectCategory = () => {
         setOpened(false);
 
        if(currentCategory&&getGenres) getGenres(currentCategory.id==='all'?'':currentCategory.id)
-    }, [currentCategory]);
+    }, [currentCategory, getGenres]);
     useEffect(() => {
         getCategories().then(result => setCategories(result)).catch(error => console.warn(error));
     }, []);
