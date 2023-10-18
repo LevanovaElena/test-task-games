@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import Image from 'next/image';
-import {useContext, useEffect, useState} from "react";
-import {mockScreenshots} from "../../../mocks/games";
-import {createContext} from "vm";
+import {useContext, } from "react";
 import {SliderContext} from "../slider/slider";
 
 const SliderListWrapper=styled.div`

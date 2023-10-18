@@ -1,4 +1,4 @@
-import React, {JSX, useState} from "react";
+import React, { useState} from "react";
 import styled from "styled-components";
 
 export const MAX_COUNT_LETTERS_FOR_VIEW = 333;

@@ -41,7 +41,7 @@ const TitleGame = styled.span`
 `
 export const SliderContext = createContext();
 
-const Slider = ({idGame, nameGame}) => {
+const Slider = ({ nameGame}) => {
     const [listImages, setListImages] = useState(mockScreenshots.results);
     const [total, setTotal] = useState(mockScreenshots.count);
     const [slide, setSlide] = useState(0);

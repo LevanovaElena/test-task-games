@@ -11,7 +11,7 @@ const DotsContainer=styled.div`
   width: auto;
   margin:1.5rem auto;
 `
-const SliderDots = ({idGame}) => {
+const SliderDots = () => {
     const { slidesCount } = useContext(SliderContext);
 
     const renderDots = () => {

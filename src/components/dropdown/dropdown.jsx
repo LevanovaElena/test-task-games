@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Image from 'next/image'
 import SliderButton from "../slider-button/slider-button";
 import {Flex} from "../../styles/common";
-import {useEffect, useRef, useState} from "react";
+import {useEffect,  useState} from "react";
 
 const DropdownContainer = styled.ul`
   background-color: var(--gray-100);

@@ -1,18 +1,9 @@
 "use client"
-import {createContext, useContext, useEffect, useState} from "react";
-import {SliderContext} from "../slider/slider";
+import {createContext,  useState} from "react";
 import {Filters} from "../filters";
 import ListGames from "../list-games/list-games";
-import {getAllGames, PAGE_SIZE} from "../../api/games";
-import {mockScreenshots} from "../../../mocks/games";
 import {useSearchParams} from "next/navigation";
 
-const initValue = {
-    ordering: '', genres: '', search: '', page: 1, listGames: null,
-    setOrdering: null,
-    setGenres: null,
-    setSearch: null,
-}
 export const GamesContext = createContext();
 const ScreenHome = () => {
     const [orderingDate, setOrderingDate] = useState(null);

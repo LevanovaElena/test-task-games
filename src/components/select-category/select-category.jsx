@@ -2,7 +2,6 @@ import {Dropdown} from "../dropdown";
 import {ButtonComponent} from "../button";
 import {useContext, useEffect, useState} from "react";
 import styled from "styled-components";
-import {mockCategories} from "../../../mocks/genres";
 import {getCategories} from "../../api/games";
 import {GamesContext} from "../screen-home/screen-home";
 

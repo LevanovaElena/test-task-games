@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import Image from 'next/image';
-import {useContext, useEffect, useState} from "react";
-import {SliderContext} from "../slider/slider";
+import { useEffect, useState} from "react";
 import {useResize} from "../../hooks/use-resize";
 
 const SlideWrapper=styled.div`

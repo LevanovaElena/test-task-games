@@ -1,8 +1,6 @@
 'use client';
 
 import styled from "styled-components";
-import Link from "next/link";
-import {mockGames} from "../../../mocks/games";
 import GameCard from "../game-card/game-card";
 import {Loader} from "../loader";
 import {useContext, useEffect, useRef, useState} from "react";

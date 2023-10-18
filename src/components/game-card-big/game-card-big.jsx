@@ -7,7 +7,7 @@ import IconLink from '../../assets/icons/link.svg';
 import Link from "next/link";
 import Description from "../description/description";
 import {useEffect, useState} from "react";
-import {getCategories, getGame} from "../../api/games";
+import { getGame} from "../../api/games";
 import {useParams} from "next/navigation";
 import {Loader} from "../loader";
 

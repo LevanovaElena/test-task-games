@@ -55,7 +55,7 @@ const Line=styled.hr`
   width: 96%;
   align-self: center;
   margin: 15px 0;
-  height: 0px;
+  height: 0;
   color:var(--gray-200);
   background-color: var(--gray-200);
   border-top: none;
