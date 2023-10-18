@@ -22,7 +22,7 @@ const ImageSlide = styled(Image)`
   display: flex;
   margin: 0 auto;
   height: auto;
-   width: ${props=>props.currentW&&props.currentW<1200?props.currentW+'px':'80%'};
+   width: ${props=>props.currentw&&props.currentw<1200?props.currentw+'px':'80%'};
   };
 `
 const Slide = ({slide,animation}) => {
@@ -44,7 +44,7 @@ const Slide = ({slide,animation}) => {
     }, [width]);
     return (
         <SlideWrapper  className={`${animation && 'fadeInAnimation'}`}>
-            {slide&&slide.image?<ImageSlide src={slide.image||''} alt={'slide'} width={loadWidth} height={300} currentW={imageW}/>:null}
+            {slide&&slide.image?<ImageSlide src={slide.image||''} alt={'slide'} width={loadWidth} height={300} currentw={imageW}/>:null}
         </SlideWrapper>
     );
 }
