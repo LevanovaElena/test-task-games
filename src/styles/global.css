@@ -35,6 +35,9 @@
     margin: 0;
     padding: 0;
 }
+html{
+    font-size:14px;
+}
 body{
     position: relative;
 }
@@ -50,7 +53,16 @@ body{
     overflow-x: hidden;
 
 }
-
+/*@media (min-width: 576px) {
+    html{
+        font-size:14px;
+    }
+}
+@media (min-width: 1400px) {
+    html{
+        font-size:16px;
+    }
+}*/
 
 /*@media (min-width: 992px){
     .container {

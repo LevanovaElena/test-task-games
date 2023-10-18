@@ -20,10 +20,6 @@ const Card = styled.article`
   width: 100%;
   height: auto;
   
-  &:hover{
-    box-shadow: 39px 12px 59px 0 rgba(199, 199, 199, 0.80);
-  }
-
   @media (min-width: 576px) {
 
   }

@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import GameCardBig from "../game-card-big/game-card-big";
 import {mockGame} from "../../../mocks/games";
+import {Slider} from "../slider";
+
 
 
 const GameContainer = styled.section`
@@ -27,6 +29,7 @@ const ScreenGame = () => {
     return (
         <GameContainer>
             <GameCardBig game={mockGame}/>
+            <Slider idGame={mockGame.id}/>
         </GameContainer>
     )
 }

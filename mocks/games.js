@@ -5817,3 +5817,52 @@ export const mockGame=
         clip: null,
         description_raw: "The third game in a series, it holds nothing back from the player. Open world adventures of the renowned monster slayer Geralt of Rivia are now even on a larger scale. Following the source material more accurately, this time Geralt is trying to find the child of the prophecy, Ciri while making a quick coin from various contracts on the side. Great attention to the world building above all creates an immersive story, where your decisions will shape the world around you.\n\nCD Project Red are infamous for the amount of work they put into their games, and it shows, because aside from classic third-person action RPG base game they provided 2 massive DLCs with unique questlines and 16 smaller DLCs, containing extra quests and items.\n\nPlayers praise the game for its atmosphere and a wide open world that finds the balance between fantasy elements and realistic and believable mechanics, and the game deserved numerous awards for every aspect of the game, from music to direction."
     }
+export const mockScreenshots={
+    count: 6,
+    next: null,
+    previous: null,
+    results: [
+        {
+            id: 30336,
+            image: "https://media.rawg.io/media/screenshots/1ac/1ac19f31974314855ad7be266adeb500.jpg",
+            width: 1280,
+            height: 720,
+            is_deleted: false
+        },
+        {
+            id: 30337,
+            image: "https://media.rawg.io/media/screenshots/6a0/6a08afca95261a2fe221ea9e01d28762.jpg",
+            width: 1280,
+            height: 720,
+            is_deleted: false
+        },
+        {
+            id: 30338,
+            image: "https://media.rawg.io/media/screenshots/cdd/cdd31b6b4a687425a87b5ce231ac89d7.jpg",
+            width: 1280,
+            height: 720,
+            is_deleted: false
+        },
+        {
+            id: 30339,
+            image: "https://media.rawg.io/media/screenshots/862/862397b153221a625922d3bb66337834.jpg",
+            width: 1280,
+            height: 720,
+            is_deleted: false
+        },
+        {
+            id: 30340,
+            image: "https://media.rawg.io/media/screenshots/166/166787c442a45f52f4f230c33fd7d605.jpg",
+            width: 1280,
+            height: 720,
+            is_deleted: false
+        },
+        {
+            id: 30342,
+            image: "https://media.rawg.io/media/screenshots/f63/f6373ee614046d81503d63f167181803.jpg",
+            width: 1280,
+            height: 720,
+            is_deleted: false
+        }
+    ]
+}
