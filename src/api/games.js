@@ -14,7 +14,13 @@ const getCategories = ()=>{
     return fetch(`${BASE_URL}/genres?${params.toString()}`).then(response=>response.json());
 }
 
+const getGame = (slug)=>{
+    const params = new URLSearchParams({key:KEY});
+    return fetch(`${BASE_URL}/games/${slug}?${params.toString()}`).then(response=>response.json());
+}
+
 export {
     getAllGames,
-    getCategories
+    getCategories,
+    getGame
 }

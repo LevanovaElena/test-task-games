@@ -5,7 +5,7 @@ import Link from "next/link";
 import {mockGames} from "../../../mocks/games";
 import GameCard from "../game-card/game-card";
 import {Loader} from "../loader";
-import {useContext, useEffect, useState} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import {getAllGames, PAGE_SIZE} from "../../api/games";
 import {GamesContext} from "../screen-home/screen-home";
 
@@ -29,42 +29,74 @@ const Wrapper = styled.section`
 `;
 
 const ListGames = () => {
-    const {genres,search,orderingDate,orderingRating}=useContext(GamesContext);
-    const [listGames, setListGames] = useState(null);
+    const {genres, search, orderingDate, orderingRating} = useContext(GamesContext);
+    const [listGames, setListGames] = useState([]);
     const [page, setPage] = useState(1);
     const [total, setTotal] = useState(0);
+    const loadData = async () => {
+        try {
+            const params = {
+                ordering: orderingDate || orderingRating || '',
+                genres: genres,
+                search: search,
+                page_size: PAGE_SIZE,
+                page: page
+            }
+            const games = await getAllGames(params);
+            setListGames(prevList => {
+                return [...prevList, ...games.results || []]
+            });
+            setTotal(games.count);
+        } catch (err) {
+            console.warn(err);
+        }
+    };
     useEffect(() => {
-        console.log('genres',genres)
-        const loadData = async () => {
-            try {
-                const params={
-                    ordering:  orderingDate||orderingRating||'',
-                    genres: genres,
-                    search: search,
-                    page_size: PAGE_SIZE,
-                    page: page
+        setListGames([]);
+        setPage(1);
+
+    }, [genres, search, orderingRating, orderingDate]);
+
+    useEffect(() => {
+        if(page>1)loadData();
+    }, [page]);
+
+    const observerTarget = useRef(null);
+
+    useEffect(() => {
+
+        const observer = new IntersectionObserver(
+            entries => {
+                if (entries[0].isIntersecting) {
+                    setPage(prevState => prevState + 1);
+
                 }
-                const games = await getAllGames(params);
-                setListGames(games.results||[]);
-                setTotal(games.count);
-            } catch (err) {
-                console.warn(err);
+            },
+            {threshold: 1}
+        );
+
+        if (observerTarget.current) {
+            observer.observe(observerTarget.current);
+        }
+
+        return () => {
+            if (observerTarget.current) {
+                observer.unobserve(observerTarget.current);
             }
         };
-
-        loadData();
-    }, [genres,search,orderingRating,orderingDate]);
+    }, [observerTarget]);
 
     return (
         <>
             <Wrapper>
-                {listGames&& listGames.length > 0 && listGames.map(game => (
+                {listGames && listGames.length > 0 && listGames.map(game => (
                     <GameCard game={game} key={game.id}/>
                 ))}
-
             </Wrapper>
 
-            <Loader/>
+            <div ref={observerTarget} style={{'margin-bottom':'50px'}}>
+                <Loader/>
+            </div>
         </>
     )
 }
