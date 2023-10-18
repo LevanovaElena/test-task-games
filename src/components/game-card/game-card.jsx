@@ -58,19 +58,21 @@ const ImagePoster = styled(Image)`
 
 
 const GameCard = ({game}) => {
+    const {background_image=null,name='Unknown Name',slug=null,id=null,released=null,rating=0}=game;
     return (
             <Card>
-                <ImagePoster  src={game.background_image} alt={'poster'} width={270} height={270}/>
+                {background_image?
+                <ImagePoster  src={background_image} alt={'poster'} width={270} height={270}/>:null}
                 <AboutGameContainer>
-                    <TitleGame href={`/game/${game.slug||game.id}`}>{game.name}</TitleGame>
+                    <TitleGame href={slug||id?`/game/${game.slug||game.id}`:'#'}>{name}</TitleGame>
                     <Flex flexmargin={'10px 0 0 0'} jcontent={'center'} >
                         <Flex direction={'column'} items={'start'}>
                             <span>Release date:</span>
-                            <strong>{getDateFromString(game.released)}</strong>
+                            <strong>{getDateFromString(released)}</strong>
                         </Flex>
                         <Flex items={'center'} jcontent={'flex-end'}>
                             <Image src={IconStar} alt={'rating'} />
-                            <strong> {game.rating}</strong>
+                            <strong> {rating}</strong>
                         </Flex>
                     </Flex>
                 </AboutGameContainer>

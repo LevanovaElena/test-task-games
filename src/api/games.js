@@ -1,0 +1,20 @@
+const BASE_URL = 'https://api.rawg.io/api';
+const KEY = '322d9a74e2fa45e796ad3979911c5442';
+export const PAGE_SIZE = 10;
+
+const getAllGames = (_params)=>{
+    const params = new URLSearchParams({..._params,key:KEY});
+    if(!_params.genres)params.delete('genres');
+    if(!_params.ordering)params.delete('ordering');
+
+    return fetch(`${BASE_URL}/games?${params.toString()}`).then(response=>response.json());
+}
+const getCategories = ()=>{
+    const params = new URLSearchParams({key:KEY});
+    return fetch(`${BASE_URL}/genres?${params.toString()}`).then(response=>response.json());
+}
+
+export {
+    getAllGames,
+    getCategories
+}

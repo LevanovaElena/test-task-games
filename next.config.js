@@ -8,8 +8,6 @@ const nextConfig = {
             {
                 protocol: 'https',
                 hostname: 'media.rawg.io',
-                /*port: '',
-                pathname: '/media/games/!**!/!**',*/
             },
         ],
     },

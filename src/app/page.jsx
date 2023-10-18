@@ -1,13 +1,7 @@
-import ListGames from "../components/list-games/list-games";
-import {Filters} from "../components/filters";
-
+import {ScreenHome} from "../components/screen-home";
 
 export default function Home() {
   return (
-      <>
-        <Filters/>
-        <ListGames/>
-      </>
-
+      <ScreenHome/>
   )
 }

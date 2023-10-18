@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Image from 'next/image'
 import SliderButton from "../slider-button/slider-button";
 import {Flex} from "../../styles/common";
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 
 const DropdownContainer = styled.ul`
   background-color: var(--gray-100);
@@ -69,25 +69,33 @@ const ImageCategory = styled(Image)`
 
 `
 const COUNT_CATEGORIES_ON_PAGE = 5;
-
-const Dropdown = ({opened, list, totalCount,setCurrentCategory}) => {
+const getCountPage = (totalCount) => {
+    return Math.floor(totalCount / COUNT_CATEGORIES_ON_PAGE) + (totalCount % COUNT_CATEGORIES_ON_PAGE > 1 ? 1 : 0)
+}
+const Dropdown = ({opened, list, totalCount, setCurrentCategory}) => {
     const [currentList, setCurrentList] = useState(list.slice(0, COUNT_CATEGORIES_ON_PAGE));
-    const [currentPage, setCurrentPage] = useState(1);
-    const allPages = useRef(Math.floor(totalCount / COUNT_CATEGORIES_ON_PAGE) + (totalCount % COUNT_CATEGORIES_ON_PAGE > 1 ? 1 : 0));
+    const [currentPage, setCurrentPage] = useState(0);
+    const [allPages, setAllPages] = useState(getCountPage(totalCount));
+    useEffect(() => {
+        setAllPages(getCountPage(totalCount));
+        setCurrentList(list.slice(0, COUNT_CATEGORIES_ON_PAGE));
+    }, [list, totalCount]);
+
+    useEffect(() => {
+        if (!currentPage) return;
+        const start = (currentPage - 1) * COUNT_CATEGORIES_ON_PAGE;
+        const end = (currentPage - 1) * COUNT_CATEGORIES_ON_PAGE + COUNT_CATEGORIES_ON_PAGE;
+        setCurrentList([...list.slice(start, end)]);
+
+    }, [currentPage])
     const nextPage = () => {
-        if (currentPage < allPages.current) {
-            const start = currentPage * COUNT_CATEGORIES_ON_PAGE;
-            const end = currentPage * COUNT_CATEGORIES_ON_PAGE + COUNT_CATEGORIES_ON_PAGE;
+        if (currentPage < allPages) {
             setCurrentPage(currentPage + 1);
-            setCurrentList(list.slice(start, end));
         }
     }
     const prevPage = () => {
         if (currentPage > 0) {
-            const end = currentPage * COUNT_CATEGORIES_ON_PAGE;
-            const start = currentPage * COUNT_CATEGORIES_ON_PAGE - COUNT_CATEGORIES_ON_PAGE;
             setCurrentPage(currentPage - 1);
-            setCurrentList(list.slice(start, end));
         }
     }
     return (
@@ -96,19 +104,21 @@ const Dropdown = ({opened, list, totalCount,setCurrentCategory}) => {
                 <TitleDropdown>Categories</TitleDropdown>
                 <SliderButton onClickNext={nextPage}
                               onClickPrev={prevPage}
-                              nextActive={currentPage < allPages.current}
-                              prevActive={currentPage !== 1}
+                              nextActive={currentPage < allPages}
+                              prevActive={currentPage > 1}
                 />
             </Flex>
 
             {currentList && currentList.length > 0 && currentList.map(item => (
-                <Li key={item.id} onClick={()=> {
+                <Li key={item.id} onClick={() => {
                     setCurrentCategory(item);
                 }}>
+                    {item.id==='all'?'':
                     <ImageCategory alt={item.name || ''} src={item.image_background} width={300} height={300}/>
-                    <Info>
+                    }
+                        <Info>
                         <p>{item.name || ''}</p>
-                        <span>Games Count: {item.games_count}</span>
+                            {item.id==='all'?'':<span>Games Count: {item.games_count}</span>}
                     </Info>
                 </Li>
 

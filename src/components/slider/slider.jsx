@@ -42,7 +42,6 @@ const Slider = ({idGame, nameGame}) => {
     const [listImages, setListImages] = useState(mockScreenshots.results);
     const [total, setTotal] = useState(mockScreenshots.count);
     const [slide, setSlide] = useState(0);
-    const [touchPosition, setTouchPosition] = useState(null);
 
     const [animation, setAnimation] = useState(true);
 
@@ -53,19 +52,6 @@ const Slider = ({idGame, nameGame}) => {
         };
         loadData();
     }, []);
-    /*    useEffect(() => {
-            if (listImages.length) {
-                preloadImages();
-            }
-        }, [slide, listImages]);*/
-    /*    const preloadImages = () => {
-            const prevItemIndex = slide - 1 < 0 ? listImages.length - 1 : slide - 1;
-            const nextItemIndex = (slide + 1) % listImages.length;
-
-            new Image().src = listImages[slide].url;
-            new Image().src = listImages[prevItemIndex].url;
-            new Image().src = listImages[nextItemIndex].url;
-        }*/
 
     const changeSlide = (direction = 1) => {
         setAnimation(false);

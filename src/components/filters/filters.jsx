@@ -4,6 +4,8 @@ import styled from "styled-components";
 import {Flex, H1} from "../../styles/common";
 import {ButtonComponent} from "../button";
 import {SelectCategory} from "../select-category";
+import {useContext} from "react";
+import {GamesContext} from "../screen-home/screen-home";
 
 
 const Wrapper = styled.section`
@@ -25,13 +27,23 @@ const Wrapper = styled.section`
 
 
 const Filters = () => {
+    const{getOrderingDate,getOrderingRating,orderingRating,orderingDate}=useContext(GamesContext);
     return (
         <Wrapper  >
             <H1>Find Your Game!</H1>
             <Flex flexwidth={'auto'} flexmargin={'20px 0 0 0'}>
                 <SelectCategory/>
-                <ButtonComponent icon={'date'} iconAfter={'up'} style={{'margin':'0 20px'}}>Release date</ButtonComponent>
-                <ButtonComponent icon={'star'}>Average rating</ButtonComponent>
+                <ButtonComponent icon={'date'}
+                                 iconAfter={orderingDate?orderingDate.startsWith('-')?'up':'down':null}
+                                 style={{'margin':'0 20px'}}
+                                 onClick={ getOrderingDate}>
+                    Release date
+                </ButtonComponent>
+                <ButtonComponent icon={'star'}
+                                 iconAfter={orderingRating?orderingRating.startsWith('-')?'down':'up':null}
+                                 onClick={getOrderingRating}>
+                    Average rating
+                </ButtonComponent>
             </Flex>
 
 

@@ -1,8 +1,10 @@
 import {Dropdown} from "../dropdown";
 import {ButtonComponent} from "../button";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import styled from "styled-components";
 import {mockCategories} from "../../../mocks/genres";
+import {getCategories} from "../../api/games";
+import {GamesContext} from "../screen-home/screen-home";
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,18 +15,33 @@ const Wrapper = styled.div`
 
 `
 const SelectCategory = () => {
+    const [categories, setCategories] = useState(null);
     const [opened, setOpened] = useState(false);
     const [currentCategory, setCurrentCategory] = useState(null);
+    const {getGenres}=useContext(GamesContext)
     useEffect(() => {
         setOpened(false);
+
+       if(currentCategory&&getGenres) getGenres(currentCategory.id==='all'?'':currentCategory.id)
     }, [currentCategory]);
+    useEffect(() => {
+        getCategories().then(result => setCategories(result)).catch(error => console.warn(error));
+    }, []);
+
+    const onopenClick = () => {
+        setOpened(prevState => !prevState)
+    }
     return (
         <Wrapper>
             <ButtonComponent icon={'category'}
-                             onClick={() => setOpened(prevState => !prevState)}>{currentCategory?.name || 'Category'}</ButtonComponent>
-            <Dropdown opened={opened} list={mockCategories.results} totalCount={mockCategories.count || 0}
-                      setCurrentCategory={setCurrentCategory}>
-
+                             onClick={onopenClick}>
+                {currentCategory?.name || 'Category'}
+            </ButtonComponent>
+            <Dropdown
+                opened={opened}
+                list={[{id: 'all',name: "All Categories"},...categories?.results||[]]}
+                totalCount={categories?.count+1 || 0}
+                setCurrentCategory={setCurrentCategory}>
             </Dropdown>
         </Wrapper>
 
