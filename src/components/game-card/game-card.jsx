@@ -1,3 +1,4 @@
+'use client';
 import styled from "styled-components";
 import Image from 'next/image'
 import {Flex} from "../../styles/common";
@@ -15,19 +16,12 @@ const Card = styled.figure`
   border-radius: 24px;
   box-shadow: 39px 12px 59px 0 rgba(199, 199, 199, 0.60);
   
-  max-width: 282px;
-  min-height: 405px;
+  width: 282px;
   
   &:hover{
     box-shadow: 39px 12px 59px 0 rgba(199, 199, 199, 0.80);
   }
 
-  @media (min-width: 576px) {
-
-  }
-  @media (min-width: 1400px) {
-
-  }
 `
 const AboutGameContainer = styled.figcaption`
   display: flex;

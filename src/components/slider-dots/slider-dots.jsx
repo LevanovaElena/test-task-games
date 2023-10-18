@@ -1,3 +1,4 @@
+'use client';
 import styled from "styled-components";
 import {useContext} from "react";
 import {SliderContext} from "../slider/slider";

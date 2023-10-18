@@ -25,17 +25,38 @@ const Wrapper = styled.section`
   }
 `;
 
+const ButtonContainer = styled.div`
+  width: 100%;
+  height: 14rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1rem ;
+  background-color: transparent;
+  gap:1rem;
+  
+  @media(min-width:576px){
+    flex-direction: row;
+    align-items: center;
+    justify-content:center;
+    height: auto;
+    padding: 3rem 0 0 0;
+  }
+
+`;
+
 
 const Filters = () => {
     const{getOrderingDate,getOrderingRating,orderingRating,orderingDate}=useContext(GamesContext);
     return (
         <Wrapper  >
             <H1>Find Your Game!</H1>
-            <Flex flexwidth={'auto'} flexmargin={'20px 0 0 0'}>
+            <ButtonContainer flexwidth={'auto'} flexmargin={'20px 0 0 0'}>
                 <SelectCategory/>
                 <ButtonComponent icon={'date'}
                                  iconAfter={orderingDate?orderingDate.startsWith('-')?'up':'down':null}
-                                 style={{'margin':'0 20px'}}
+
                                  onClick={ getOrderingDate}>
                     Release date
                 </ButtonComponent>
@@ -44,7 +65,7 @@ const Filters = () => {
                                  onClick={getOrderingRating}>
                     Average rating
                 </ButtonComponent>
-            </Flex>
+            </ButtonContainer>
 
 
         </Wrapper>

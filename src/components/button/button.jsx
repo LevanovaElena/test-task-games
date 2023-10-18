@@ -1,3 +1,4 @@
+'use client';
 import styled from "styled-components";
 import IconCategory from '../../assets/icons/category.svg';
 import IconDate from '../../assets/icons/date.svg';
@@ -21,7 +22,7 @@ const Button=styled.button`
   border-radius: 9px;
   border: 1.5px solid var(--dark);
   color: ${props => props.fill?`var(--gray-100)`:`var(--dark)`};
-  font-size:10px;
+  font-size:1rem;
   font-weight: 600;
   background-color: ${props => props.fill?`var(--dark)`:`var(--gray-100)`};
   cursor: pointer;
