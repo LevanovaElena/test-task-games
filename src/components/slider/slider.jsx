@@ -60,6 +60,20 @@ const Slider = ({ nameGame}) => {
         };
         loadData();
     }, [slug]);
+    const preloadImages = () => {
+        const prevItemIndex = slide - 1 < 0 ? listImages.length - 1 : slide - 1;
+        const nextItemIndex = (slide + 1) % listImages.length;
+
+        new Image().src = listImages[slide].image;
+        new Image().src = listImages[prevItemIndex].image;
+        new Image().src = listImages[nextItemIndex].image;
+    }
+
+    useEffect(() => {
+        if (listImages.length) {
+            preloadImages();
+        }
+    }, [slide, listImages])
 
     const changeSlide = (direction = 1) => {
         setAnimation(false);
