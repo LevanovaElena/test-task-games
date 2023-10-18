@@ -13,6 +13,7 @@ const Header = styled.header`
   top: 0;
   padding: 30px;
   background-color: var(--gray-100);
+  z-index: 1000;
 
   @media(min-width:576px){
     flex-direction: row;

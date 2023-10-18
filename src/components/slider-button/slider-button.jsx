@@ -7,12 +7,14 @@ const SliderButtonWrapper=styled.div`
   background-color: var(--white);
   border:1px solid var(--dark);
   width: 118px;
-  height: 50px;
-  padding: 15px;
+  height: 3rem;
+  padding: 0.8rem;
   display: grid;
   grid-template-columns: 0.5fr 0.5fr;
   @media(min-width:576px){
-
+    padding:1rem;
+    width: 118px;
+    height: 50px;
   }
   @media(min-width:1400px){
 

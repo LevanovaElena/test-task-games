@@ -4,6 +4,7 @@ import {mockScreenshots} from "../../../mocks/games";
 import {SliderButton} from "../slider-button";
 import {SliderDots} from "../slider-dots";
 import {Slide} from "../slide";
+import {Flex} from "../../styles/common";
 
 
 const SliderContainer = styled.section`
@@ -14,22 +15,30 @@ const SliderContainer = styled.section`
   border-radius: 24px;
   box-shadow: 39px 12px 59px 0 rgba(199, 199, 199, 0.60);
   width: 100%;
-  height: 80vh;
+  height: auto;
   margin-top: 1rem;
   @media (min-width: 576px) {
-
+    padding: 1.5rem;
   }
   @media (min-width: 1400px) {
-
+    padding: 3rem;
+  }
+`
+const TitleGame = styled.span`
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--dark);
+  padding: 1rem;
+  @media (min-width: 576px) {
+    font-size: 1.7rem;
+  }
+  @media (min-width: 1400px) {
+    font-size: 2rem;
   }
 `
 export const SliderContext = createContext();
 
-function Dots() {
-    return null;
-}
-
-const Slider = ({idGame}) => {
+const Slider = ({idGame, nameGame}) => {
     const [listImages, setListImages] = useState(mockScreenshots.results);
     const [total, setTotal] = useState(mockScreenshots.count);
     const [slide, setSlide] = useState(0);
@@ -109,12 +118,15 @@ const Slider = ({idGame}) => {
                     listImages,
                 }}
             >
-                <SliderButton
-                    onClickPrev={() => changeSlide(-1)}
-                    onClickNext={() => changeSlide(1)}
-                    nextActive
-                    prevActive
-                />
+                <Flex>
+                    <TitleGame>{nameGame || ''} <p>screenshots</p></TitleGame>
+                    <SliderButton
+                        onClickPrev={() => changeSlide(-1)}
+                        onClickNext={() => changeSlide(1)}
+                        nextActive
+                        prevActive
+                    />
+                </Flex>
                 <Slide slide={listImages[slide]} animation={animation}/>
                 <SliderDots/>
             </SliderContext.Provider>

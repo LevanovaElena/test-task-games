@@ -8,7 +8,8 @@ const DotsContainer=styled.div`
   flex-direction: row;
   justify-content: center;
   height: 6px;
-  width: 50vw;
+  width: auto;
+  margin:1.5rem auto;
 `
 const SliderDots = ({idGame}) => {
     const { slidesCount } = useContext(SliderContext);

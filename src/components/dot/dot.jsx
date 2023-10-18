@@ -9,6 +9,7 @@ const DotDiv = styled.div`
   border-radius: 50%;
   transition: all 1s;
   background-color: var(--dark);
+  cursor: pointer;
 
   &.selected {
     background-color: var(--gray-600);

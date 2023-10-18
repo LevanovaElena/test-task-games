@@ -12,7 +12,7 @@ const GameContainer = styled.section`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
+  
 
   padding:30px 30px;
 
@@ -29,7 +29,7 @@ const ScreenGame = () => {
     return (
         <GameContainer>
             <GameCardBig game={mockGame}/>
-            <Slider idGame={mockGame.id}/>
+            <Slider idGame={mockGame.id} nameGame={mockGame.name}/>
         </GameContainer>
     )
 }
