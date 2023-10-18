@@ -1,3 +1,4 @@
+'use client';
 import styled from "styled-components";
 import IconLeft from '../../assets/icons/arrow-left.svg';
 import IconRight from '../../assets/icons/arrow-right.svg';

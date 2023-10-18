@@ -1,3 +1,4 @@
+'use client';
 import styled from "styled-components";
 import {useEffect, useState, createContext} from "react";
 import {mockScreenshots} from "../../../mocks/games";

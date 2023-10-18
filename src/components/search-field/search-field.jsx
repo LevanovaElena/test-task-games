@@ -64,7 +64,10 @@ const Line=styled.hr`
   }
 `
 const Form=styled.form`
-width: 70%;
+width: 100%;
+  @media(min-width:576px){
+    width: 70%;
+  }
 `
 const ButtonClose=styled.button`
   background: url(${IconClose.src}) no-repeat center;

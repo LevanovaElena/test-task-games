@@ -1,3 +1,4 @@
+'use client';
 import styled from "styled-components";
 import GameCardBig from "../game-card-big/game-card-big";
 import {mockGame} from "../../../mocks/games";

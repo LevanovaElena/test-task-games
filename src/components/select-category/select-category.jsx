@@ -1,3 +1,4 @@
+'use client';
 import {Dropdown} from "../dropdown";
 import {ButtonComponent} from "../button";
 import {useContext, useEffect, useState} from "react";
