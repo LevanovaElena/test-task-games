@@ -7,7 +7,7 @@ import IconStar from '../../assets/icons/star.svg';
 import IconLink from '../../assets/icons/link.svg';
 import Link from "next/link";
 import Description from "../description/description";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {getGame} from "../../api/games";
 import {useParams} from "next/navigation";
 import {Loader} from "../loader";
@@ -78,6 +78,10 @@ const Website = styled(Link)`
   height: 26px;
 `
 const GameCardBig = ({game}) => {
+    const refText=useRef();
+    useEffect(()=>{
+        if(!game.description_raw&&refText.current)refText.current.innerHTML=game.description;
+    },[refText])
 
     if(!game)return null;
     const {
@@ -87,16 +91,18 @@ const GameCardBig = ({game}) => {
         id = '',
         description_raw = '',
         released = '',
-        website = '#',
-        rating = 0
+        website = null,
+        rating = 0,
+        description=null
     } = game;
     return (
         <Card>
-            <ImagePoster src={background_image} alt={'poster'} width={800} height={600}/>
+            {background_image&&<ImagePoster src={background_image} alt={'poster'} width={800} height={600}/>}
             <AboutGameContainer>
                 <Flex direction={'column'} items={'start'}>
                     <TitleGame>{name}</TitleGame>
-                    <Description description={description_raw}/>
+                    {description_raw&& <Description description={description_raw}/>}
+                    {!description_raw&&description&& <p ref={refText}></p>}
                 </Flex>
                 <Flex flexmargin={'10px 0 0 0'} jcontent={'center'}>
                     <Flex direction={'column'} items={'start'}>
@@ -104,9 +110,9 @@ const GameCardBig = ({game}) => {
                         <strong>{getDateFromString(released)}</strong>
                     </Flex>
                     <Flex items={'center'} jcontent={'flex-end'}>
-                        <Website href={website} target={'_blank'} title={'Website'}></Website>
+                        {website&&<Website href={website} target={'_blank'} title={'Website'}></Website>}
                         <Image src={IconStar} alt={'rating'} style={{margin: '0 10px'}}/>
-                        <strong> {rating}</strong>
+                        <strong>{rating}</strong>
                     </Flex>
                 </Flex>
             </AboutGameContainer>

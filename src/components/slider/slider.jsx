@@ -110,12 +110,9 @@ const Slider = ({ nameGame}) => {
     };
 
     if(isLoading)return <Loader/>
-    if (!total)
-        return (
-            <SliderContainer>
-                <span>Not Found</span>
-            </SliderContainer>
-        )
+    if (!total||!listImages||listImages.length===0)
+        return null;
+
     return (
         <SliderContainer>
             <SliderContext.Provider
