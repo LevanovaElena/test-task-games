@@ -8,7 +8,7 @@ import IconLink from '../../assets/icons/link.svg';
 import Link from "next/link";
 import Description from "../description/description";
 import {useEffect, useState} from "react";
-import { getGame} from "../../api/games";
+import {getGame} from "../../api/games";
 import {useParams} from "next/navigation";
 import {Loader} from "../loader";
 
@@ -63,7 +63,7 @@ const ImagePoster = styled(Image)`
   object-fit: cover;
   width: 100%;
   height: 100%;
-  margin:0 auto;
+  margin: 0 auto;
 
   transition: all 1s;
   @media (min-width: 1400px) {
@@ -77,32 +77,36 @@ const Website = styled(Link)`
   width: 26px;
   height: 26px;
 `
-const GameCardBig = () => {
-    const [game, setGame] = useState(null);
-    const {slug}=useParams();
+const GameCardBig = ({game}) => {
 
-    useEffect(() => {
-        getGame(slug).then(result => setGame(result)).catch(error => console.warn(error));
-    }, [slug]);
-    if(!game)return <Loader/>
-
+    if(!game)return null;
+    const {
+        background_image = null,
+        name = 'Unknown Name',
+        slug = '',
+        id = '',
+        description_raw = '',
+        released = '',
+        website = '#',
+        rating = 0
+    } = game;
     return (
         <Card>
-            <ImagePoster src={game.background_image} alt={'poster'} width={800} height={600}/>
+            <ImagePoster src={background_image} alt={'poster'} width={800} height={600}/>
             <AboutGameContainer>
                 <Flex direction={'column'} items={'start'}>
-                    <TitleGame href={`/game/${game.slug || game.id}`}>{game.name}</TitleGame>
-                    <Description description={game.description_raw}/>
+                    <TitleGame>{name}</TitleGame>
+                    <Description description={description_raw}/>
                 </Flex>
                 <Flex flexmargin={'10px 0 0 0'} jcontent={'center'}>
                     <Flex direction={'column'} items={'start'}>
                         <span>Release date:</span>
-                        <strong>{getDateFromString(game.released)}</strong>
+                        <strong>{getDateFromString(released)}</strong>
                     </Flex>
                     <Flex items={'center'} jcontent={'flex-end'}>
-                        <Website href={game.website} target={'_blank'} title={'Website'}></Website>
+                        <Website href={website} target={'_blank'} title={'Website'}></Website>
                         <Image src={IconStar} alt={'rating'} style={{margin: '0 10px'}}/>
-                        <strong> {game.rating}</strong>
+                        <strong> {rating}</strong>
                     </Flex>
                 </Flex>
             </AboutGameContainer>

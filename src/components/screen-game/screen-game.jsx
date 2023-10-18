@@ -1,8 +1,11 @@
 'use client';
 import styled from "styled-components";
 import GameCardBig from "../game-card-big/game-card-big";
-import {mockGame} from "../../../mocks/games";
 import {Slider} from "../slider";
+import {useEffect, useState} from "react";
+import {useParams} from "next/navigation";
+import {getGame} from "../../api/games";
+import {Loader} from "../loader";
 
 
 
@@ -26,11 +29,18 @@ const GameContainer = styled.section`
 `
 
 const ScreenGame = () => {
+    const [game, setGame] = useState(null);
+    const {slug}=useParams();
 
+    useEffect(() => {
+        getGame(slug).then(result => setGame(result)).catch(error => console.warn(error));
+    }, [slug]);
+
+    if(!game) return  <GameContainer><Loader/></GameContainer>
     return (
         <GameContainer>
-            <GameCardBig game={mockGame}/>
-            <Slider idGame={mockGame.id} nameGame={mockGame.name}/>
+            <GameCardBig game={game}/>
+            <Slider nameGame={game.name}  />
         </GameContainer>
     )
 }
