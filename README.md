@@ -1,19 +1,32 @@
-## Getting Started
+# Games
+___
+Test task with Infinite Scroll, Slider, API.
 
-First, run the development server:
+### API
+___
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+[Link on API](https://api.rawg.io/docs/#tag/games)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Design
+___
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+[Link on Figma](https://www.figma.com/file/VcgXyogEdaIAhaVBPlf5nC/DiveSea?type=design&t=OHb12BgVgKk2CUMY-6 "Link on Figma")
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+### Tech stack:
+___
+
+- React 18
+- Node.js >14.0.0
+- Styled Components
+- Next.js 13.4.9
+
+### How to use
+___
+
+use ```npm run dev``` - for start development <br>
+use ```npm run start``` - for build and start server
+
+### Demo
+___
+[Site on Netlify](https://deploy--game-test-task.netlify.app/)
