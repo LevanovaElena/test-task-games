@@ -18,6 +18,7 @@ const Wrapper = styled.section`
   grid-row-gap: 67px;
   justify-items: center;
   padding: 30px;
+  height: 55vh;
 
   @media (min-width: 992px) {
     padding: 32px 68px;
@@ -32,8 +33,10 @@ const ListGames = () => {
     const {genres, search, orderingDate, orderingRating} = useContext(GamesContext);
     const [listGames, setListGames] = useState([]);
     const [page, setPage] = useState(1);
+    const [isLoading, setIsLoading] = useState(true);
     const [total, setTotal] = useState(0);
     const loadData = async () => {
+        setIsLoading(true)
         try {
             const params = {
                 ordering: orderingDate || orderingRating || '',
@@ -47,15 +50,20 @@ const ListGames = () => {
                 return [...prevList, ...games.results || []]
             });
             setTotal(games.count);
+            setIsLoading(false);
         } catch (err) {
             console.warn(err);
+            setListGames([]);
+            setIsLoading(false);
         }
     };
     useEffect(() => {
         setListGames([]);
-        setPage(1);
+        if(page>1)setPage(1);
+        else loadData();
 
-    }, [genres, search, orderingRating, orderingDate]);
+    }, [genres, orderingRating, orderingDate,search]);
+
 
     useEffect(() => {
         if(page>1)loadData();
@@ -65,11 +73,11 @@ const ListGames = () => {
 
     useEffect(() => {
 
+
         const observer = new IntersectionObserver(
             entries => {
                 if (entries[0].isIntersecting) {
                     setPage(prevState => prevState + 1);
-
                 }
             },
             {threshold: 1}
@@ -89,14 +97,18 @@ const ListGames = () => {
     return (
         <>
             <Wrapper>
+                {isLoading&&<Loader/>}
+                {listGames.length===0&&!isLoading&&'Not Found!'}
                 {listGames && listGames.length > 0 && listGames.map(game => (
                     <GameCard game={game} key={game.id}/>
                 ))}
+
+                <div ref={observerTarget} style={{marginBottom:'50px'}}>
+                    {total>5&&<Loader/>}
+                </div>
             </Wrapper>
 
-            <div ref={observerTarget} style={{'margin-bottom':'50px'}}>
-                <Loader/>
-            </div>
+
         </>
     )
 }

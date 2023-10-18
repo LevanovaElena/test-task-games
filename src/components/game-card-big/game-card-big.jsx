@@ -6,6 +6,10 @@ import IconStar from '../../assets/icons/star.svg';
 import IconLink from '../../assets/icons/link.svg';
 import Link from "next/link";
 import Description from "../description/description";
+import {useEffect, useState} from "react";
+import {getCategories, getGame} from "../../api/games";
+import {useParams} from "next/navigation";
+import {Loader} from "../loader";
 
 const Card = styled.article`
   background-color: var(--white);
@@ -73,7 +77,14 @@ const Website = styled(Link)`
   width: 26px;
   height: 26px;
 `
-const GameCardBig = ({game}) => {
+const GameCardBig = () => {
+    const [game, setGame] = useState(null);
+    const {slug}=useParams();
+
+    useEffect(() => {
+        getGame(slug).then(result => setGame(result)).catch(error => console.warn(error));
+    }, [slug]);
+    if(!game)return <Loader/>
 
     return (
         <Card>

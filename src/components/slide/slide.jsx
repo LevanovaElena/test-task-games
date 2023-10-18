@@ -44,7 +44,7 @@ const Slide = ({slide,animation}) => {
     }, [width]);
     return (
         <SlideWrapper  className={`${animation && 'fadeInAnimation'}`}>
-                <ImageSlide src={slide.image} alt={'slide'} width={loadWidth} height={300} currentW={imageW}/>
+            {slide&&slide.image?<ImageSlide src={slide.image||''} alt={'slide'} width={loadWidth} height={300} currentW={imageW}/>:null}
         </SlideWrapper>
     );
 }

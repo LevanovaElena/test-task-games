@@ -5,6 +5,7 @@ import {Filters} from "../filters";
 import ListGames from "../list-games/list-games";
 import {getAllGames, PAGE_SIZE} from "../../api/games";
 import {mockScreenshots} from "../../../mocks/games";
+import {useSearchParams} from "next/navigation";
 
 const initValue = {
     ordering: '', genres: '', search: '', page: 1, listGames: null,
@@ -17,7 +18,9 @@ const ScreenHome = () => {
     const [orderingDate, setOrderingDate] = useState(null);
     const [orderingRating, setOrderingRating] = useState('-rating');
     const [genres, setGenres] = useState('');
-    const [search, setSearch] = useState('');
+    const searchParams = useSearchParams()
+
+    const search = searchParams.get('search')
     const getGenres = (value) => setGenres(value);
     const getOrderingRating = () => {
         setOrderingRating(prevState => prevState&&prevState.startsWith('-') ? 'rating' : '-rating');
@@ -27,7 +30,6 @@ const ScreenHome = () => {
         setOrderingRating(null)
         setOrderingDate(prevState => prevState&&prevState.startsWith('-') ? 'released' : '-released');
     }
-    const getSearch = (value) => setSearch(value);
 
 
     return (
@@ -36,11 +38,10 @@ const ScreenHome = () => {
                 orderingDate,
                 orderingRating,
                 genres,
-                search,
+                search:search||'',
                 getOrderingRating,
                 getOrderingDate,
                 getGenres,
-                getSearch,
             }}
         >
             <Filters/>

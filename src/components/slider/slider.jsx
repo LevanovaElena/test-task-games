@@ -5,6 +5,9 @@ import {SliderButton} from "../slider-button";
 import {SliderDots} from "../slider-dots";
 import {Slide} from "../slide";
 import {Flex} from "../../styles/common";
+import {getScreens} from "../../api/games";
+import {useParams} from "next/navigation";
+import {Loader} from "../loader";
 
 
 const SliderContainer = styled.section`
@@ -42,16 +45,20 @@ const Slider = ({idGame, nameGame}) => {
     const [listImages, setListImages] = useState(mockScreenshots.results);
     const [total, setTotal] = useState(mockScreenshots.count);
     const [slide, setSlide] = useState(0);
+    const [isLoading, setIsLoading] = useState(false);
+    const {slug}=useParams();
 
     const [animation, setAnimation] = useState(true);
 
     useEffect(() => {
         const loadData = async () => {
-            const images = mockScreenshots.results; //await getImages();
-            setListImages(images);
+            setIsLoading(true)
+            const images = await getScreens(slug);
+            setListImages(images.results);
+            setIsLoading(false)
         };
         loadData();
-    }, []);
+    }, [slug]);
 
     const changeSlide = (direction = 1) => {
         setAnimation(false);
@@ -87,6 +94,7 @@ const Slider = ({idGame, nameGame}) => {
         }
     };
 
+    if(isLoading)return <Loader/>
     if (!total)
         return (
             <SliderContainer>
