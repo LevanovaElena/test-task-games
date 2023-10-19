@@ -40,11 +40,14 @@ html{
 }
 body{
     position: relative;
+    height: auto;
+    min-height: 100vh;
 }
 .container{
     background-color: var(--gray-100);
     width: 100%;
     height: auto;
+    min-height: 100vh;
     color: var(--gray-400);
     font-style: normal;
     line-height: 27px;

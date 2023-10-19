@@ -16,7 +16,7 @@ const Wrapper = styled.section`
   grid-row-gap: 67px;
   justify-items: center;
   padding: 30px;
-  height: 55vh;
+  //height: 55vh;
 
   @media (min-width: 992px) {
     padding: 32px 68px;
@@ -34,7 +34,7 @@ const ListGames = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [total, setTotal] = useState(0);
     const loadData = async () => {
-        setIsLoading(true)
+
         try {
             const params = {
                 ordering: orderingDate || orderingRating || '',
@@ -56,6 +56,7 @@ const ListGames = () => {
         }
     };
     useEffect(() => {
+        setIsLoading(true)
         setListGames([]);
         if(page>1)setPage(1);
         else loadData();
@@ -94,15 +95,16 @@ const ListGames = () => {
 
     return (
         <>
+            {isLoading&&<Loader/>}
             <Wrapper>
-                {isLoading&&<Loader/>}
+
                 {listGames.length===0&&!isLoading&&'Not Found!'}
                 {listGames && listGames.length > 0 && listGames.map(game => (
                     <GameCard game={game} key={game.id}/>
                 ))}
 
                 <div ref={observerTarget} style={{marginBottom:'50px'}}>
-                    {total>5&&<Loader/>}
+                    {total>5&&!isLoading&&<Loader/>}
                 </div>
             </Wrapper>
 

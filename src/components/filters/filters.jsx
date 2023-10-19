@@ -55,7 +55,7 @@ const Filters = () => {
             <ButtonContainer flexwidth={'auto'} flexmargin={'20px 0 0 0'}>
                 <SelectCategory/>
                 <ButtonComponent icon={'date'}
-                                 iconAfter={orderingDate?orderingDate.startsWith('-')?'up':'down':null}
+                                 iconAfter={orderingDate?orderingDate.startsWith('-')?'down':'up':null}
 
                                  onClick={ getOrderingDate}>
                     Release date

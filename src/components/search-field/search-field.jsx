@@ -107,7 +107,7 @@ const SearchField = () => {
         event.preventDefault();
         if(debounced?.length>2){
             setValue('');
-            router.push(`/?search=`)
+            router.push(`/`)
         }
     }
     return (

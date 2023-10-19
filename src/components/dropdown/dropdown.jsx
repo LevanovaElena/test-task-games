@@ -91,7 +91,10 @@ const Dropdown = ({opened, list, totalCount, setCurrentCategory}) => {
     }, [currentPage])
     const nextPage = () => {
         if (currentPage < allPages) {
-            setCurrentPage(currentPage + 1);
+            setCurrentPage(prevState=> {
+                if(prevState===0)return 2;
+                return currentPage + 1
+            });
         }
     }
     const prevPage = () => {

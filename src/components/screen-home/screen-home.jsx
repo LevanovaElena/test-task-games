@@ -1,5 +1,5 @@
 "use client"
-import {createContext,  useState} from "react";
+import {createContext, useState} from "react";
 import {Filters} from "../filters";
 import ListGames from "../list-games/list-games";
 import {useSearchParams} from "next/navigation";
@@ -14,7 +14,7 @@ const ScreenHome = () => {
     const search = searchParams.get('search')
     const getGenres = (value) => setGenres(value);
     const getOrderingRating = () => {
-        setOrderingRating(prevState => prevState&&prevState.startsWith('-') ? 'rating' : '-rating');
+        setOrderingRating(prevState => prevState && prevState.startsWith('-') ? 'rating' : '-rating');
         setOrderingDate(null);
     }
     const getOrderingDate = () => {
@@ -29,7 +29,7 @@ const ScreenHome = () => {
                 orderingDate,
                 orderingRating,
                 genres,
-                search:search||'',
+                search: search || '',
                 getOrderingRating,
                 getOrderingDate,
                 getGenres,
